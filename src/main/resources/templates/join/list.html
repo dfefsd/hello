@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>리스트</h1>
+	<table>
+		<thead>
+			<th>번호</th>
+			<th>이메일</th>
+			<th>비번</th>
+		</thead>
+		<tbody th:each="list:${list}">
+			<form th:action="|/join/list/${list.no}|" method="post">
+				<!--<input type="hidden" th:value="${list.no}">-->
+				<input type="hidden" name="_method" value="delete"/>
+				<th th:text="${list.no}">번호</th>
+				<th th:text="${list.email}">이메일</th>
+				<th th:text="${list.pass}">비번</th>
+				<th><button>삭제</button></th>
+			</form>
+		</tbody>
+	</table>
+</body>
+</html>
